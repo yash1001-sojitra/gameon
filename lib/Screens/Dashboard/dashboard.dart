@@ -1,5 +1,6 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:gameon/Screens/Dashboard/detailsscreen.dart';
 
 class GameonDash extends StatefulWidget {
   const GameonDash({Key? key}) : super(key: key);
@@ -63,8 +64,7 @@ class _GameonDashState extends State<GameonDash> {
             selectedTextColor: Colors.white,
             onDateChange: (date) {
               // New date selected
-              setState(() {
-              });
+              setState(() {});
             },
           ),
           const SizedBox(
@@ -119,7 +119,14 @@ class _GameonDashState extends State<GameonDash> {
             child: ListView.builder(
               itemCount: 5,
               itemBuilder: (BuildContext context, int index) {
-                return const GroundListViewModel();
+                return GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const GroundDetails()));
+                    },
+                    child: const GroundListViewModel());
               },
             ),
           )
@@ -184,7 +191,7 @@ class GroundListViewModel extends StatelessWidget {
                         width: 70,
                         height: 25,
                         decoration: BoxDecoration(
-                            color: const Color(0xff088F81),
+                            color: Colors.grey,
                             borderRadius: BorderRadius.circular(5)),
                         child: const Center(
                             child: Text(
