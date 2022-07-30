@@ -35,6 +35,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   
+  #date picker 
+  date_picker_timeline: ^1.2.3
+  
   #animation and font
   lottie: ^1.2.1
   google_fonts: ^2.2.0
@@ -68,6 +71,7 @@ flutter:
   assets:
       - assets/images/
       - assets/json/
+      - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

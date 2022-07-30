@@ -1,3 +1,4 @@
+import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 
 class GameonDash extends StatefulWidget {
@@ -10,6 +11,327 @@ class GameonDash extends StatefulWidget {
 class _GameonDashState extends State<GameonDash> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+          toolbarHeight: 80,
+          backgroundColor: const Color(0xff088F81),
+          elevation: 3,
+          shadowColor: const Color(0xff088F81),
+          title: const Text("Grounds"),
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10))),
+          actions: [
+            IconButton(
+                splashColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onPressed: () {},
+                icon: Image.asset(
+                  "assets/icons/searchicon.png",
+                  height: 30,
+                  width: 35,
+                  color: Colors.white,
+                )),
+            IconButton(
+                splashColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onPressed: () {},
+                icon: Image.asset(
+                  "assets/icons/settingicon.png",
+                  height: 30,
+                  width: 35,
+                  color: Colors.white,
+                ))
+          ]),
+      drawer: const Drawer(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          const SizedBox(
+            height: 20,
+          ),
+          DatePicker(
+            DateTime.now(),
+            initialSelectedDate: DateTime.now().add(const Duration(days: 2)),
+            daysCount: 30,
+            selectionColor: const Color(0xff088F81),
+            selectedTextColor: Colors.white,
+            onDateChange: (date) {
+              // New date selected
+              setState(() {
+              });
+            },
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                      splashColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onPressed: () {},
+                      icon: Image.asset(
+                        "assets/icons/locationicon.png",
+                        height: 30,
+                        width: 35,
+                        color: const Color(0xff088F81),
+                      )),
+                  const Text(
+                    "Maharastra, India",
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+                  )
+                ],
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: const Padding(
+                  padding: EdgeInsets.only(right: 10.0),
+                  child: Text(
+                    "Change >",
+                    style: TextStyle(
+                        color: Color(0xff088F81), fontWeight: FontWeight.w700),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 10.0, right: 10),
+            child: Divider(
+              color: Colors.grey,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index) {
+                return const GroundListViewModel();
+              },
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class GroundListViewModel extends StatelessWidget {
+  const GroundListViewModel({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      elevation: 3,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10), // Image border
+                  child: SizedBox(
+                    width: 100,
+                    height: 130,
+                    child: Image.asset(
+                      "assets/images/stadiumimage.jpg",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("20 over",
+                      style: TextStyle(fontWeight: FontWeight.w600)),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        width: 70,
+                        height: 25,
+                        decoration: BoxDecoration(
+                            color: const Color(0xff088F81),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: const Center(
+                            child: Text(
+                          "10:00 am",
+                          style: TextStyle(color: Colors.white),
+                        )),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Container(
+                        width: 70,
+                        height: 25,
+                        decoration: BoxDecoration(
+                            color: const Color(0xff088F81),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: const Center(
+                            child: Text(
+                          "1:00 pm",
+                          style: TextStyle(color: Colors.white),
+                        )),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Container(
+                        width: 70,
+                        height: 25,
+                        decoration: BoxDecoration(
+                            color: const Color(0xff088F81),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: const Center(
+                            child: Text(
+                          "4:00 pm",
+                          style: TextStyle(color: Colors.white),
+                        )),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Text(
+                    "30 over",
+                    style: TextStyle(fontWeight: FontWeight.w600),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        width: 70,
+                        height: 25,
+                        decoration: BoxDecoration(
+                            color: const Color(0xff088F81),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: const Center(
+                            child: Text(
+                          "2:00 pm",
+                          style: TextStyle(color: Colors.white),
+                        )),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Container(
+                        width: 70,
+                        height: 25,
+                        decoration: BoxDecoration(
+                            color: const Color(0xff088F81),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: const Center(
+                            child: Text(
+                          "4:00 pm",
+                          style: TextStyle(color: Colors.white),
+                        )),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const Text(
+            "Wankhede International Cricket Stadium",
+            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 17),
+          ),
+          Row(
+            children: [
+              IconButton(
+                  splashColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onPressed: () {},
+                  icon: Image.asset(
+                    "assets/icons/locationicon.png",
+                    height: 30,
+                    width: 35,
+                    color: Colors.grey,
+                  )),
+              const Text(
+                "Maharastra, India",
+                style: TextStyle(color: Colors.grey, fontSize: 15),
+              )
+            ],
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 10.0, right: 10, top: 0),
+            child: Divider(
+              color: Colors.grey,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: const [
+                    Text(
+                      "Pitch type: ",
+                      style: TextStyle(color: Colors.black, fontSize: 15),
+                    ),
+                    Text(
+                      "Mat",
+                      style: TextStyle(color: Colors.black, fontSize: 15),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                        splashColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onPressed: () {},
+                        icon: Image.asset(
+                          "assets/icons/navigationicon.png",
+                          height: 30,
+                          width: 35,
+                          color: const Color(0xff088F81),
+                        )),
+                    const Text(
+                      "Navigate",
+                      style: TextStyle(
+                          color: Color(0xff088F81),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
