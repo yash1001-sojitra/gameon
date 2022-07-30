@@ -4,10 +4,10 @@
 const String splashScreenRoute = '/';
 
 // auth using Phonenumber
-const String numberauthScreenRoute = 'numberauthScreenRoute';
-const String otpverificationScreenRoute = 'otpverificationScreenRoute';
+const String numberauthScreenRoute = '/numberauthScreenRoute';
+const String otpverificationScreenRoute = '/otpverificationScreenRoute';
 
-//forgot password
-const String forgotpassScreenRoute = '/forgotpass';
+//dash
+const String gameondashScreenRoute = '/gameondash';
 
 //****************End-Routes***********************

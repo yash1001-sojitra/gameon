@@ -38,6 +38,7 @@ dependencies:
   #animation and font
   lottie: ^1.2.1
   google_fonts: ^2.2.0
+  pinput: ^2.2.11
 
 dev_dependencies:
   flutter_test:

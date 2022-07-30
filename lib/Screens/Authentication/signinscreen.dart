@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gameon/Core/Constant/string.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignInWithNumber extends StatefulWidget {
@@ -108,7 +109,7 @@ class _SignInWithNumberState extends State<SignInWithNumber> {
   Widget _buildIntroText() {
     return Column(
       children: <Widget>[
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         const Text(
@@ -205,12 +206,22 @@ class _SignInWithNumberState extends State<SignInWithNumber> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, otpverificationScreenRoute);
+                },
                 child: Center(
                   child: Container(
                     height: 50,
-                    width: 100,
+                    width: 150,
                     decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xff088F81).withOpacity(0.2),
+                            spreadRadius: 4,
+                            blurRadius: 10,
+                            offset: const Offset(0, 3),
+                          )
+                        ],
                         color: const Color(0xff088F81),
                         borderRadius: BorderRadius.circular(10)),
                     child: const Center(
