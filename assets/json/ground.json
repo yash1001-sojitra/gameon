@@ -1,0 +1,32 @@
+{
+  "Ground": [
+    {
+      "name": "Wankhede International Cricket Stadium",
+      "pitch_type": "Mat",
+      "Image": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Wankhede_ICC_WCF.jpg",
+      "Address": "Maharastra, India",
+      "date": "14 July 2022 at 23:00:18 UTC+5:30"
+    },
+    {
+      "name": "Sawai Man Singh Stadium, Jaipur, Rajasthan",
+      "pitch_type": "Mat",
+      "Image": "https://static-news.moneycontrol.com/static-mcnews/2017/03/IPL_2017-e1491130201299-708x435.jpg",
+      "Address": "Rajasthan, India",
+      "date": "14 July 2022 at 23:00:18 UTC+5:30"
+    },
+    {
+      "name": "Rajiv Gandhi International Stadium, Hyderabad",
+      "pitch_type": "Mat",
+      "Image": "https://s3.ap-southeast-1.amazonaws.com/images.deccanchronicle.com/dc-Cover-7aiacg0oeif2m275q6013j39l4-20170519005033.Medi.jpeg",
+      "Address": "Hyderabad, India",
+      "date": "14 July 2022 at 23:00:18 UTC+5:30"
+    },
+    {
+      "name": "Eden Garden Stadium Kolkata, West Bengal",
+      "pitch_type": "Mat",
+      "Image": "http://s3.india.com/travel/wp-content/uploads/2016/03/16-kolkata-eden-gardens-3.jpg",
+      "Address": "West Bengal, India",
+      "date": "14 July 2022 at 23:00:18 UTC+5:30"
+    }
+  ]
+}
