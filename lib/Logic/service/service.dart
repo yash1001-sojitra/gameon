@@ -7,7 +7,7 @@ import 'package:gameon/Logic/model/ground_model.dart';
 class FetchJsonFile {
   Future<Ground> fetchGround() async {
     try {
-       String data = await rootBundle.loadString('assets/json/groung.txt');
+       String data = await rootBundle.loadString('assets/json/ground.txt');
       var jsonResult = json.decode(data);
       return Ground.fromJson(jsonResult);
     } catch (e) {
