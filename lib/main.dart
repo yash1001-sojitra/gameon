@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:gameon/Logic/service/service.dart';
 import 'package:gameon/Routes/routes.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MultiProvider(
+      providers : [
+         StreamProvider.value(
+          value: FetchJsonFile().fetchGround(),
+          initialData: null,
+        ),
+      ],
+      child: const MyApp(),
+    ),);
 }
 
 class MyApp extends StatelessWidget {
