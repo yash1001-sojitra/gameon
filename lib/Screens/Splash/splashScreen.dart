@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -113,9 +115,3 @@ class BackgroundImage extends StatelessWidget {
     );
   }
 }
-
-
-// #088F81
-// 100%
-// #088F81
-// 76%
