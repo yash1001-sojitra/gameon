@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:gameon/Logic/model/ground_model.dart';
+import 'package:gameon/Screens/Dashboard/dashboard.dart';
 
 class GroundDetails extends StatefulWidget {
   const GroundDetails({Key? key}) : super(key: key);
@@ -12,6 +14,8 @@ class GroundDetails extends StatefulWidget {
 class _GroundDetailsState extends State<GroundDetails> {
   @override
   Widget build(BuildContext context) {
+    final details_data =
+        ModalRoute.of(context)!.settings.arguments as GroundList;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
@@ -56,7 +60,7 @@ class _GroundDetailsState extends State<GroundDetails> {
                 width: MediaQuery.of(context).size.width * 0.80,
                 height: 190,
                 child: Image.asset(
-                  "assets/images/stadiumimage.jpg",
+                  details_data.image,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -64,9 +68,9 @@ class _GroundDetailsState extends State<GroundDetails> {
             const SizedBox(
               height: 20,
             ),
-            const Text(
-              "Wankhede International Cricket Stadium",
-              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 17),
+            Text(
+              details_data.name,
+              style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 17),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 18.0),
@@ -97,14 +101,15 @@ class _GroundDetailsState extends State<GroundDetails> {
                     ],
                   ),
                   Row(
-                    children: const [
-                      Text(
+                    children: [
+                      const Text(
                         "Pitch type: ",
                         style: TextStyle(color: Colors.black, fontSize: 15),
                       ),
                       Text(
-                        "Mat",
-                        style: TextStyle(color: Colors.black, fontSize: 15),
+                        details_data.pitchType,
+                        style:
+                            const TextStyle(color: Colors.black, fontSize: 15),
                       ),
                     ],
                   ),

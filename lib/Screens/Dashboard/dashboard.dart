@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, non_constant_identifier_names
+
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -135,14 +137,27 @@ class _GameonDashState extends State<GameonDash> {
                 ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: 5,
+                  itemCount: ground.fields!.length,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(
-                              context, gameondetailsScreenRoute);
+                          // Navigator.pushNamed(context, gameondetailsScreenRoute,
+                          //     arguments: ground.fields![index]);
+
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => GroundDetails(),
+                                settings: RouteSettings(
+                                    arguments: ground.fields![index]),
+                              ));
                         },
-                        child: const GroundListViewModel());
+                        child: GroundListViewModel(
+                          groundname: ground.fields![index].name,
+                          groundimage: ground.fields![index].image,
+                          address: ground.fields![index].address,
+                          pitch_type: ground.fields![index].pitchType,
+                        ));
                   },
                 )
               ],
@@ -154,9 +169,25 @@ class _GameonDashState extends State<GameonDash> {
   }
 }
 
-class GroundListViewModel extends StatelessWidget {
-  const GroundListViewModel({Key? key}) : super(key: key);
+class GroundListViewModel extends StatefulWidget {
+  GroundListViewModel(
+      {required this.groundname,
+      required this.address,
+      required this.pitch_type,
+      required this.groundimage,
+      Key? key})
+      : super(key: key);
 
+  String groundname;
+  String address;
+  String pitch_type;
+  String groundimage;
+
+  @override
+  State<GroundListViewModel> createState() => _GroundListViewModelState();
+}
+
+class _GroundListViewModelState extends State<GroundListViewModel> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -173,8 +204,8 @@ class GroundListViewModel extends StatelessWidget {
                   child: SizedBox(
                     width: 100,
                     height: 130,
-                    child: Image.asset(
-                      "assets/images/stadiumimage.jpg",
+                    child: Image.network(
+                      widget.groundimage,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -282,9 +313,9 @@ class GroundListViewModel extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const Text(
-            "Wankhede International Cricket Stadium",
-            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 17),
+          Text(
+            widget.groundname,
+            style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 17),
           ),
           Row(
             children: [
@@ -300,9 +331,9 @@ class GroundListViewModel extends StatelessWidget {
                     width: 35,
                     color: Colors.grey,
                   )),
-              const Text(
-                "Maharastra, India",
-                style: TextStyle(color: Colors.grey, fontSize: 15),
+              Text(
+                widget.address,
+                style: const TextStyle(color: Colors.grey, fontSize: 15),
               )
             ],
           ),
@@ -318,14 +349,14 @@ class GroundListViewModel extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       "Pitch type: ",
                       style: TextStyle(color: Colors.black, fontSize: 15),
                     ),
                     Text(
-                      "Mat",
-                      style: TextStyle(color: Colors.black, fontSize: 15),
+                      widget.pitch_type,
+                      style: const TextStyle(color: Colors.black, fontSize: 15),
                     ),
                   ],
                 ),
