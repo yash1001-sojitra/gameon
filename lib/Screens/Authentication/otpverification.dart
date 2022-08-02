@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:gameon/Core/Constant/string.dart';
 // import 'package:gameon/Screens/Dashboard/dashboard.dart';
@@ -22,11 +24,9 @@ class _OtpverificationState extends State<Otpverification>
   late final ScrollController scrollController;
 
   Future<void> requestLocationPermission() async {
-    final serviceStatusLocation = await Permission.locationWhenInUse.isGranted;
-    bool isLocation = serviceStatusLocation == ServiceStatus.enabled;
     final status = await Permission.locationWhenInUse.request();
     if (status == PermissionStatus.granted) {
-      print('Permission Granted');
+      Navigator.pushNamed(context, gameondashScreenRoute);
     } else {
       if (status == PermissionStatus.denied) {
         print('Permission denied');
@@ -218,10 +218,7 @@ class _OtpverificationState extends State<Otpverification>
           ),
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, gameondashScreenRoute);
-              // requestLocationPermission();
-
-              Navigator.pushNamed(context, gameondashScreenRoute);
+              requestLocationPermission();
             },
             child: Center(
               child: Container(
