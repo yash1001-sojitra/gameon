@@ -1,12 +1,9 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:gameon/Core/Constant/string.dart';
-// import 'package:gameon/Screens/Dashboard/dashboard.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:permission_handler/permission_handler.dart';
-// import 'package:location/location.dart';
-// import 'package:permission_handler/permission_handler.dart';
 
 import '../../Logic/widgets/pin_input.dart';
 

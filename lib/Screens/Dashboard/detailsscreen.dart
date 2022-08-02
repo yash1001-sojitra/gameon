@@ -1,9 +1,8 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:gameon/Core/Constant/string.dart';
 import 'package:gameon/Logic/model/ground_model.dart';
-import 'package:gameon/Screens/Dashboard/dashboard.dart';
 
 class GroundDetails extends StatelessWidget {
   GroundDetails({Key? key, required this.ground}) : super(key: key);

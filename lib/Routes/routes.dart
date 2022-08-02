@@ -6,7 +6,6 @@ import 'package:gameon/Logic/service/service.dart';
 import 'package:gameon/Screens/Authentication/otpverification.dart';
 import 'package:gameon/Screens/Authentication/signinscreen.dart';
 import 'package:gameon/Screens/Dashboard/dashboard.dart';
-import 'package:gameon/Screens/Dashboard/detailsscreen.dart';
 import 'package:gameon/Screens/Splash/splashscreen.dart';
 
 import '../Core/Constant/string.dart';
