@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gameon/Logic/cubit/cubit/ground_cubit.dart';
+import 'package:gameon/Logic/data_provider/data_provider.dart';
+import 'package:gameon/Logic/service/service.dart';
 import 'package:gameon/Screens/Authentication/otpverification.dart';
 import 'package:gameon/Screens/Authentication/signinscreen.dart';
 import 'package:gameon/Screens/Dashboard/dashboard.dart';
@@ -25,8 +29,13 @@ class Routes {
         return MaterialPageRoute(builder: (context) => const Otpverification());
 
 //dash
-      case gameondashScreenRoute:
-        return MaterialPageRoute(builder: (context) => const GameonDash());
+
+   case gameondashScreenRoute:
+        return MaterialPageRoute(builder: (_) => BlocProvider(
+            create: (context) => GroundCubit(dataProvider: DataProvider(fetchJsonFile: FetchJsonFile())),
+            child: const GameonDash(),
+          ));
+          
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
