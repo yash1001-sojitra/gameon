@@ -1,6 +1,7 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gameon/Core/Constant/string.dart';
 import 'package:gameon/Logic/cubit/cubit/ground_cubit.dart';
 import 'package:gameon/Screens/Dashboard/detailsscreen.dart';
 
@@ -62,90 +63,90 @@ class _GameonDashState extends State<GameonDash> {
           }
           final ground = state.ground;
           print(ground.fields!.first.date);
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              const SizedBox(
-                height: 20,
-              ),
-              DatePicker(
-                DateTime.now(),
-                initialSelectedDate:
-                    DateTime.now().add(const Duration(days: 2)),
-                daysCount: 30,
-                selectionColor: const Color(0xff088F81),
-                selectedTextColor: Colors.white,
-                onDateChange: (date) {
-                  // New date selected
-                  setState(() {});
-                },
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      IconButton(
-                          splashColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onPressed: () {},
-                          icon: Image.asset(
-                            "assets/icons/locationicon.png",
-                            height: 30,
-                            width: 35,
-                            color: const Color(0xff088F81),
-                          )),
-                      const Text(
-                        "Maharastra, India",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700, fontSize: 15),
-                      )
-                    ],
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: const Padding(
-                      padding: EdgeInsets.only(right: 10.0),
-                      child: Text(
-                        "Change >",
-                        style: TextStyle(
-                            color: Color(0xff088F81),
-                            fontWeight: FontWeight.w700),
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                const SizedBox(
+                  height: 20,
+                ),
+                DatePicker(
+                  DateTime.now(),
+                  initialSelectedDate:
+                      DateTime.now().add(const Duration(days: 2)),
+                  daysCount: 30,
+                  selectionColor: const Color(0xff088F81),
+                  selectedTextColor: Colors.white,
+                  onDateChange: (date) {
+                    // New date selected
+                    setState(() {});
+                  },
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        IconButton(
+                            splashColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onPressed: () {},
+                            icon: Image.asset(
+                              "assets/icons/locationicon.png",
+                              height: 30,
+                              width: 35,
+                              color: const Color(0xff088F81),
+                            )),
+                        const Text(
+                          "Maharastra, India",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700, fontSize: 15),
+                        )
+                      ],
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: const Padding(
+                        padding: EdgeInsets.only(right: 10.0),
+                        child: Text(
+                          "Change >",
+                          style: TextStyle(
+                              color: Color(0xff088F81),
+                              fontWeight: FontWeight.w700),
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 10.0, right: 10),
-                child: Divider(
-                  color: Colors.grey,
+                  ],
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Expanded(
-                child: ListView.builder(
+                const Padding(
+                  padding: EdgeInsets.only(left: 10.0, right: 10),
+                  child: Divider(
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
                   itemCount: 5,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                         onTap: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const GroundDetails()));
+                          Navigator.pushNamed(
+                              context, gameondetailsScreenRoute);
                         },
                         child: const GroundListViewModel());
                   },
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           );
         },
       ),

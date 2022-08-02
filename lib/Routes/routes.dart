@@ -6,6 +6,7 @@ import 'package:gameon/Logic/service/service.dart';
 import 'package:gameon/Screens/Authentication/otpverification.dart';
 import 'package:gameon/Screens/Authentication/signinscreen.dart';
 import 'package:gameon/Screens/Dashboard/dashboard.dart';
+import 'package:gameon/Screens/Dashboard/detailsscreen.dart';
 import 'package:gameon/Screens/Splash/splashscreen.dart';
 
 import '../Core/Constant/string.dart';
@@ -30,12 +31,18 @@ class Routes {
 
 //dash
 
-   case gameondashScreenRoute:
-        return MaterialPageRoute(builder: (_) => BlocProvider(
-            create: (context) => GroundCubit(dataProvider: DataProvider(fetchJsonFile: FetchJsonFile())),
-            child: const GameonDash(),
-          ));
-          
+      case gameondashScreenRoute:
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => GroundCubit(
+                      dataProvider:
+                          DataProvider(fetchJsonFile: FetchJsonFile())),
+                  child: const GameonDash(),
+                ));
+
+      case gameondetailsScreenRoute:
+        return MaterialPageRoute(builder: (context) => const GroundDetails());
+
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

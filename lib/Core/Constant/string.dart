@@ -9,5 +9,6 @@ const String otpverificationScreenRoute = '/otpverificationScreenRoute';
 
 //dash
 const String gameondashScreenRoute = '/gameondash';
+const String gameondetailsScreenRoute = '/gameondetailsscreen';
 
 //****************End-Routes***********************
