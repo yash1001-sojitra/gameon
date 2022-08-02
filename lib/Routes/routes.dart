@@ -39,8 +39,8 @@ class Routes {
                   child: const GameonDash(),
                 ));
 
-      case gameondetailsScreenRoute:
-        return MaterialPageRoute(builder: (context) => const GroundDetails());
+      // case gameondetailsScreenRoute:
+      //   return MaterialPageRoute(builder: (context) =>  GroundDetails());
 
       default:
         return MaterialPageRoute(

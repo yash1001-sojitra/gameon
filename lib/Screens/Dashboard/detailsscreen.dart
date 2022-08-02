@@ -5,18 +5,17 @@ import 'package:gameon/Core/Constant/string.dart';
 import 'package:gameon/Logic/model/ground_model.dart';
 import 'package:gameon/Screens/Dashboard/dashboard.dart';
 
-class GroundDetails extends StatefulWidget {
-  const GroundDetails({Key? key}) : super(key: key);
+class GroundDetails extends StatelessWidget {
+  GroundDetails({Key? key, required this.ground}) : super(key: key);
+    GroundList ground;
 
-  @override
-  State<GroundDetails> createState() => _GroundDetailsState();
-}
+  // const GroundDetails({Key? key}) : super(key: key);
 
-class _GroundDetailsState extends State<GroundDetails> {
+
   @override
   Widget build(BuildContext context) {
-    final detailsData =
-        ModalRoute.of(context)!.settings.arguments as GroundList;
+    // final detailsData =
+    //     ModalRoute.of(context)!.settings.arguments as GroundList;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
@@ -66,7 +65,7 @@ class _GroundDetailsState extends State<GroundDetails> {
                 width: MediaQuery.of(context).size.width * 0.80,
                 height: 190,
                 child: Image.network(
-                  detailsData.image,
+                  ground.image,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -75,7 +74,7 @@ class _GroundDetailsState extends State<GroundDetails> {
               height: 20,
             ),
             Text(
-              detailsData.name,
+              ground.name,
               style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 17),
             ),
             Padding(
@@ -113,7 +112,7 @@ class _GroundDetailsState extends State<GroundDetails> {
                         style: TextStyle(color: Colors.black, fontSize: 15),
                       ),
                       Text(
-                        detailsData.pitchType,
+                        ground.pitchType,
                         style:
                             const TextStyle(color: Colors.black, fontSize: 15),
                       ),
