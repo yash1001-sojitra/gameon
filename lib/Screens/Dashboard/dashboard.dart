@@ -141,16 +141,7 @@ class _GameonDashState extends State<GameonDash> {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                         onTap: () {
-                          // Navigator.pushNamed(context, gameondetailsScreenRoute,
-                          //     arguments: ground.fields![index]);
-
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const GroundDetails(),
-                                settings: RouteSettings(
-                                    arguments: ground.fields![index]),
-                              ));
+                          Navigator.push(context,  MaterialPageRoute(builder: (context) => GroundDetails(ground:ground.fields![index],)));
                         },
                         child: GroundListViewModel(
                           groundname: ground.fields![index].name,
