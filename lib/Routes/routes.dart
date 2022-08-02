@@ -29,8 +29,7 @@ class Routes {
       case otpverificationScreenRoute:
         return MaterialPageRoute(builder: (context) => const Otpverification());
 
-//dash
-
+      //dash
       case gameondashScreenRoute:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(

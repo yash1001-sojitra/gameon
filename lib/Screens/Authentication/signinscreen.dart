@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gameon/Core/Constant/string.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,6 +27,11 @@ class _SignInWithNumberState extends State<SignInWithNumber> {
       ),
     ],
   );
+
+  final _formkey = GlobalKey<FormState>();
+  TextEditingController phonenumbercontroller = TextEditingController();
+  final FocusNode _phoneFocus = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -136,6 +142,7 @@ class _SignInWithNumberState extends State<SignInWithNumber> {
 
   Widget _phonenumber() {
     return Form(
+      key: _formkey,
       child: Column(
         children: [
           Column(
@@ -160,10 +167,25 @@ class _SignInWithNumberState extends State<SignInWithNumber> {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: TextFormField(
-                  autofocus: true,
+                  focusNode: _phoneFocus,
+                  expands: false,
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(10),
+                  ],
+                  keyboardType: TextInputType.phone,
+                  controller: phonenumbercontroller,
                   cursorColor: const Color(0xff088F81),
                   textInputAction: TextInputAction.done,
-                  keyboardType: TextInputType.phone,
+                  validator: (value) {
+                    String patttern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+                    RegExp regExp = RegExp(patttern);
+                    if (value!.isEmpty) {
+                      return 'Please enter mobile number';
+                    } else if (!regExp.hasMatch(value)) {
+                      return 'Please enter valid mobile number';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                       isDense: true,
                       border: const OutlineInputBorder(
@@ -176,23 +198,11 @@ class _SignInWithNumberState extends State<SignInWithNumber> {
                       focusedBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           borderSide: BorderSide(color: Color(0xff088F81))),
-                      prefix: SizedBox(
-                          width: 60,
-                          child: Row(
-                            children: const [
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "+91",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18),
-                              ),
-                              VerticalDivider(
-                                color: Colors.black,
-                              ),
-                            ],
-                          )),
+                      prefixText: "+91  ",
+                      prefixStyle: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
                       hintText: "Phone Number",
                       filled: true,
                       fillColor: const Color(0xff088F81).withOpacity(0.1)),
@@ -210,7 +220,9 @@ class _SignInWithNumberState extends State<SignInWithNumber> {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, otpverificationScreenRoute);
+                  if (_formkey.currentState!.validate()) {
+                    Navigator.pushNamed(context, otpverificationScreenRoute);
+                  }
                 },
                 child: Center(
                   child: Container(
