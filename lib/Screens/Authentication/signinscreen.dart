@@ -29,8 +29,7 @@ class _SignInWithNumberState extends State<SignInWithNumber> {
   );
 
   final _formkey = GlobalKey<FormState>();
-  TextEditingController phonenumbercontroller = TextEditingController();
-  final FocusNode _phoneFocus = FocusNode();
+  TextEditingController phonenumbercontroller = TextEditingController(text: "");
 
   @override
   Widget build(BuildContext context) {
@@ -167,8 +166,7 @@ class _SignInWithNumberState extends State<SignInWithNumber> {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: TextFormField(
-                  focusNode: _phoneFocus,
-                  expands: false,
+                  autofocus: true,
                   inputFormatters: [
                     LengthLimitingTextInputFormatter(10),
                   ],

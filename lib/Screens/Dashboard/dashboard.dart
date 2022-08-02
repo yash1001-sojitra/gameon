@@ -141,7 +141,12 @@ class _GameonDashState extends State<GameonDash> {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                         onTap: () {
-                          Navigator.push(context,  MaterialPageRoute(builder: (context) => GroundDetails(ground:ground.fields![index],)));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => GroundDetails(
+                                        ground: ground.fields![index],
+                                      )));
                         },
                         child: GroundListViewModel(
                           groundname: ground.fields![index].name,
@@ -231,12 +236,12 @@ class _GroundListViewModelState extends State<GroundListViewModel> {
                         width: 70,
                         height: 25,
                         decoration: BoxDecoration(
-                            color: Colors.grey,
+                            border: Border.all(color: Colors.grey),
                             borderRadius: BorderRadius.circular(5)),
                         child: const Center(
                             child: Text(
                           "1:00 pm",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.grey),
                         )),
                       ),
                       const SizedBox(
@@ -272,12 +277,12 @@ class _GroundListViewModelState extends State<GroundListViewModel> {
                         width: 70,
                         height: 25,
                         decoration: BoxDecoration(
-                            color: const Color(0xff088F81),
+                            border: Border.all(color: Colors.red),
                             borderRadius: BorderRadius.circular(5)),
                         child: const Center(
                             child: Text(
                           "2:00 pm",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.red),
                         )),
                       ),
                       const SizedBox(
@@ -287,12 +292,12 @@ class _GroundListViewModelState extends State<GroundListViewModel> {
                         width: 70,
                         height: 25,
                         decoration: BoxDecoration(
-                            color: const Color(0xff088F81),
+                            border: Border.all(color: Colors.grey),
                             borderRadius: BorderRadius.circular(5)),
                         child: const Center(
                             child: Text(
                           "4:00 pm",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.grey),
                         )),
                       ),
                     ],

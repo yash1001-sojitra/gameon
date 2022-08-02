@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gameon/Core/Constant/string.dart';
-import 'package:gameon/Screens/Dashboard/dashboard.dart';
+// import 'package:gameon/Screens/Dashboard/dashboard.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:permission_handler/permission_handler.dart';
+// import 'package:location/location.dart';
+// import 'package:permission_handler/permission_handler.dart';
 
 import '../../Logic/widgets/pin_input.dart';
 
@@ -17,6 +20,22 @@ class _OtpverificationState extends State<Otpverification>
   bool isKeyboardVisible = false;
 
   late final ScrollController scrollController;
+
+  Future<void> requestLocationPermission() async {
+    final serviceStatusLocation = await Permission.locationWhenInUse.isGranted;
+    bool isLocation = serviceStatusLocation == ServiceStatus.enabled;
+    final status = await Permission.locationWhenInUse.request();
+    if (status == PermissionStatus.granted) {
+      print('Permission Granted');
+    } else {
+      if (status == PermissionStatus.denied) {
+        print('Permission denied');
+      } else if (status == PermissionStatus.permanentlyDenied) {
+        print('Permission Permanently Denied');
+        await openAppSettings();
+      }
+    }
+  }
 
   @override
   void initState() {
@@ -199,6 +218,9 @@ class _OtpverificationState extends State<Otpverification>
           ),
           GestureDetector(
             onTap: () {
+              Navigator.pushNamed(context, gameondashScreenRoute);
+              // requestLocationPermission();
+
               Navigator.pushNamed(context, gameondashScreenRoute);
             },
             child: Center(

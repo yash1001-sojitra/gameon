@@ -7,15 +7,10 @@ import 'package:gameon/Screens/Dashboard/dashboard.dart';
 
 class GroundDetails extends StatelessWidget {
   GroundDetails({Key? key, required this.ground}) : super(key: key);
-    GroundList ground;
-
-  // const GroundDetails({Key? key}) : super(key: key);
-
+  GroundList ground;
 
   @override
   Widget build(BuildContext context) {
-    // final detailsData =
-    //     ModalRoute.of(context)!.settings.arguments as GroundList;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
@@ -187,7 +182,7 @@ class GroundDetails extends StatelessWidget {
             ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: 5,
+              itemCount: 2,
               itemBuilder: (BuildContext context, int index) {
                 return const DetailsViewModel();
               },
