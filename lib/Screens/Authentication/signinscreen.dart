@@ -30,78 +30,81 @@ class _SignInWithNumberState extends State<SignInWithNumber> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            child: Padding(
-              padding: EdgeInsets.zero,
-              child: Stack(
-                children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.40,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                      image: AssetImage("assets/images/backgroundimage.png"),
-                      fit: BoxFit.cover,
-                    )),
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.40,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(
-                        color: Color.fromARGB(209, 8, 143, 130)),
-                  ),
-                  Align(
-                      alignment: Alignment.topCenter,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 80),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "assets/images/logo.png",
-                              scale: 0.9,
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text("Gameon",
-                                style: GoogleFonts.coiny(textStyle: fontstyle)),
-                          ],
-                        ),
+        child: SingleChildScrollView(
+          child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Padding(
+                padding: EdgeInsets.zero,
+                child: Stack(
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.40,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                        image: AssetImage("assets/images/backgroundimage.png"),
+                        fit: BoxFit.cover,
                       )),
-                  Positioned(
-                    top: 240,
-                    right: 0,
-                    left: 0,
-                    child: Card(
-                      elevation: 0,
-                      margin: EdgeInsets.zero,
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20))),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height * 0.65,
-                        color: Colors.transparent,
-                        child: Column(
-                          children: <Widget>[
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            _buildIntroText(),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            _phonenumber()
-                          ],
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.40,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: const BoxDecoration(
+                          color: Color.fromARGB(209, 8, 143, 130)),
+                    ),
+                    Align(
+                        alignment: Alignment.topCenter,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 80),
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/logo.png",
+                                scale: 0.9,
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text("Gameon",
+                                  style:
+                                      GoogleFonts.coiny(textStyle: fontstyle)),
+                            ],
+                          ),
+                        )),
+                    Positioned(
+                      top: 240,
+                      right: 0,
+                      left: 0,
+                      child: Card(
+                        elevation: 0,
+                        margin: EdgeInsets.zero,
+                        shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20))),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height * 0.65,
+                          color: Colors.transparent,
+                          child: Column(
+                            children: <Widget>[
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              _buildIntroText(),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              _phonenumber()
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            )),
+                  ],
+                ),
+              )),
+        ),
       ),
     );
   }

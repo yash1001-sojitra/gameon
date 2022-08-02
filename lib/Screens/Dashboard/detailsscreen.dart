@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:gameon/Core/Constant/string.dart';
 import 'package:gameon/Logic/model/ground_model.dart';
 import 'package:gameon/Screens/Dashboard/dashboard.dart';
 
@@ -14,11 +15,17 @@ class GroundDetails extends StatefulWidget {
 class _GroundDetailsState extends State<GroundDetails> {
   @override
   Widget build(BuildContext context) {
-    final details_data =
+    final detailsData =
         ModalRoute.of(context)!.settings.arguments as GroundList;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
+        leading: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, gameondashScreenRoute);
+            },
+            child: const Icon(Icons.arrow_back_ios_new_outlined)),
         backgroundColor: const Color(0xff088F81),
         elevation: 3,
         shadowColor: const Color(0xff088F81),
@@ -28,7 +35,6 @@ class _GroundDetailsState extends State<GroundDetails> {
                 bottomLeft: Radius.circular(10),
                 bottomRight: Radius.circular(10))),
       ),
-      drawer: const Drawer(),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -59,8 +65,8 @@ class _GroundDetailsState extends State<GroundDetails> {
               child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.80,
                 height: 190,
-                child: Image.asset(
-                  details_data.image,
+                child: Image.network(
+                  detailsData.image,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -69,7 +75,7 @@ class _GroundDetailsState extends State<GroundDetails> {
               height: 20,
             ),
             Text(
-              details_data.name,
+              detailsData.name,
               style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 17),
             ),
             Padding(
@@ -107,7 +113,7 @@ class _GroundDetailsState extends State<GroundDetails> {
                         style: TextStyle(color: Colors.black, fontSize: 15),
                       ),
                       Text(
-                        details_data.pitchType,
+                        detailsData.pitchType,
                         style:
                             const TextStyle(color: Colors.black, fontSize: 15),
                       ),

@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gameon/Core/Constant/string.dart';
 import 'package:gameon/Logic/cubit/cubit/ground_cubit.dart';
-import 'package:gameon/Screens/Dashboard/detailsscreen.dart';
+
+import 'detailsscreen.dart';
 
 class GameonDash extends StatefulWidget {
   const GameonDash({Key? key}) : super(key: key);
@@ -64,7 +65,6 @@ class _GameonDashState extends State<GameonDash> {
             );
           }
           final ground = state.ground;
-          print(ground.fields!.first.date);
           return SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -147,7 +147,7 @@ class _GameonDashState extends State<GameonDash> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => GroundDetails(),
+                                builder: (context) => const GroundDetails(),
                                 settings: RouteSettings(
                                     arguments: ground.fields![index]),
                               ));
